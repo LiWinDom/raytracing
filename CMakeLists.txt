@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-set(PROJECT_NAME Raycast)
+set(PROJECT_NAME Raytracing)
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 # Executables
@@ -52,7 +52,7 @@ add_executable(${PROJECT_NAME} ${EXECUTABLES})
 # It's recommended to build frameworks on MacOS
 if (APPLE)
   set(SFML_BUILD_FRAMEWORKS TRUE)
-else()
+elseif(WIN32)
   set(LINK_FLAGS -static)
 endif()
 
