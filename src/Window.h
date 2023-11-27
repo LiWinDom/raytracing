@@ -8,11 +8,11 @@
 
 class Window {
  public:
-  Window(uint16_t width = 1280, uint16_t height = 720) {
+  Window(uint16_t width, uint16_t height) {
     window_ = new sf::Window(
         sf::VideoMode(width, height),
-        "Raycast test",
-        sf::Style::Default
+        "Raytracing",
+        sf::Style::Close
     );
 
     changeSize(width, height);

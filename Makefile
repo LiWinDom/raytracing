@@ -10,11 +10,13 @@ CMAKE_DARWIN_RELEASE = cmake-darwin-release
 
 build:
 	cmake -DCMAKE_BUILD_TYPE=Release -S ./ -B ./${CMAKE_BUILD_RELEASE}
+	+$(MAKE) -c ./${CMAKE_BUILD_RELEASE}
 
 debug:
 	cmake -DCMAKE_BUILD_TYPE=Debug -S ./ -B ./${CMAKE_BUILD_DEBUG}
+	+$(MAKE) -c ./${CMAKE_BUILD_DEBUG}
 
-copy: dirs
+copy:
 	rm -rf ./$(BIN)/$(DEBUG)/$(RESOURCES)
 	cp -r ./$(RESOURCES) ./$(BIN)/$(DEBUG)
 	rm -rf ./$(BIN)/$(RELEASE)/$(RESOURCES)
@@ -22,12 +24,15 @@ copy: dirs
 
 win:
 	cmake -DCMAKE_BUILD_TYPE=Release -S ./ -B ./${CMAKE_WINDOWS_RELEASE}
+	+$(MAKE) -c ./${CMAKE_WINDOWS_RELEASE}
 
 linux:
 	cmake -DCMAKE_BUILD_TYPE=Release -S ./ -B ./${CMAKE_LINUX_RELEASE}
+	+$(MAKE) -c ./${CMAKE_LINUX_RELEASE}
 
 darwin:
 	cmake -DCMAKE_BUILD_TYPE=Release -S ./ -B ./${CMAKE_DARWIN_RELEASE}
+	+$(MAKE) -c ./${CMAKE_DARWIN_RELEASE}
 
 dirs:
 	mkdir ./$(BIN)
