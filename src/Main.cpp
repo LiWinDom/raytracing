@@ -8,16 +8,16 @@
 
 int main() {
   std::srand(std::time(nullptr));
-  Camera camera(Vector(0, 5, -5));
+  Camera camera(Vector(0, 5, -5.9));
   Window window(1280, 720);
 
   std::vector<Object*> objects = {
-      new Cube(Vector(-5, 5, 5), Vector(0, 10, 20)),
-      new Cube(Vector(5, 5, 5), Vector(0, 10, 20)),
-      new Cube(Vector(0, 0, 5), Vector(10, 0, 20)),
-      new Cube(Vector(0, 10, 5), Vector(10, 0, 20)),
+      new Cube(Vector(-5, 5, 2), Vector(0, 10, 16)),
+      new Cube(Vector(5, 5, 2), Vector(0, 10, 16)),
+      new Cube(Vector(0, 0, 2), Vector(10, 0, 16)),
+      new Cube(Vector(0, 10, 2), Vector(10, 0, 16)),
       new Cube(Vector(0, 5, 10), Vector(10, 10, 0)),
-      new Cube(Vector(0, 5, -5.1), Vector(10, 10, 0)),
+      new Cube(Vector(0, 5, -6), Vector(10, 10, 0)),
 
       new Sphere(Vector(-1, 2, 7), 2),
       new Cube(Vector(3, 1, 7), Vector(2), Vector(0, 0.5, 0)),
