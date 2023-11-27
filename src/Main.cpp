@@ -8,7 +8,7 @@
 int main() {
   std::srand(std::time(nullptr));
   Camera camera(Vector(0, 5, -5));
-  Window window(1280, 720);
+  Window window(320, 200);
 
   std::vector<Object*> objects = {
       new Cube(Vector(-5, 5, 5), Vector(0, 10, 20)),
