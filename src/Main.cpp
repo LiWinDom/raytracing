@@ -1,3 +1,4 @@
+#include <chrono>
 #include <iostream>
 
 #include "Camera.h"
@@ -40,6 +41,8 @@ int main() {
   objects[9]->setColor(255, 127, 127);
   objects[9]->setDiffusionLevel(0.7);
 
+  auto start = std::chrono::steady_clock::now();
+
   while (window.isOpen()) {
     auto events = window.eventProcessing();
     for (const auto &event : events) {
@@ -81,15 +84,23 @@ int main() {
     }
 
     if (window.getApproximationTimes() < 65536) {
+      auto stepStart = std::chrono::steady_clock::now();
+
       std::cout << "Rendering: step " << window.getApproximationTimes() + 1;
       camera.render(window, objects);
-      std::cout << " - done" << std::endl;
+
+      auto end = std::chrono::steady_clock::now();
+      std::cout << " - done in " << std::chrono::duration_cast<std::chrono::milliseconds>(end - stepStart).count() << "ms";
+      std::cout << " (total: " << std::chrono::duration_cast<std::chrono::seconds>(end - start).count() << "s)" << std::endl;
 
       if (window.getApproximationTimes() == 4 || window.getApproximationTimes() == 16 ||
       window.getApproximationTimes() == 64 || window.getApproximationTimes() == 256 ||
       window.getApproximationTimes() == 1024 || window.getApproximationTimes() == 4096 ||
-      window.getApproximationTimes() == 16384 || window.getApproximationTimes() == 65536)
-        window.save("../6_" + std::to_string(window.getApproximationTimes()) + ".ppm");
+      window.getApproximationTimes() == 16384 || window.getApproximationTimes() == 65536) {
+        std::string fileName = std::to_string(window.getApproximationTimes()) + ".ppm";
+        window.save(fileName);
+        std::cout << "Saved to \"" << fileName << "\"" << std::endl;
+      }
     }
   }
 }

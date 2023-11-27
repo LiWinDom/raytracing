@@ -12,7 +12,7 @@ void Camera::rotate(const Vector& angle) {
 }
 
 void Camera::render(Window &window, const std::vector<Object*> &objects) const {
-  auto f = [&](const size_t threadNum, const size_t totalThreads) {
+  auto func = [&](const size_t threadNum, const size_t totalThreads) {
     for (uint16_t x = 0; x < window.getWidth(); ++x) {
       for (uint16_t y = 0; y < window.getHeight(); ++y) {
         if ((x * window.getHeight() + y) % totalThreads != threadNum) continue;
@@ -33,13 +33,14 @@ void Camera::render(Window &window, const std::vector<Object*> &objects) const {
     }
   };
 
-  std::vector<std::thread> threads;
   size_t threadsNum = std::thread::hardware_concurrency();
+  std::vector<std::thread*> threads(threadsNum, nullptr);
   for (size_t i = 0; i < threadsNum; ++i) {
-    threads.push_back(std::thread(f, i, threadsNum));
+    threads[i] = new std::thread(func, i, threadsNum);
   }
   for (size_t i = 0; i < threadsNum; ++i) {
-    threads[i].join();
+    threads[i]->join();
+    delete threads[i];
   }
 
   window.addSample();
