@@ -26,12 +26,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6443f3e1-3718-4d9f-9f90-7e15305b795e" name="Changes" comment=".gitignore update">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="6443f3e1-3718-4d9f-9f90-7e15305b795e" name="Changes" comment="Added json library">
+      <change afterPath="$PROJECT_DIR$/example.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-linux-release/_deps/sfml-src/.github/PULL_REQUEST_TEMPLATE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-linux-release/_deps/sfml-src/cmake/Modules/FindVORBIS.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Window.cpp" afterDir="false" />
     </list>
@@ -44,6 +43,13 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -91,8 +97,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/lib" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration name="Raytracing" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-w 320 -h 200" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Raytracing" TARGET_NAME="Raytracing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Raytracing" RUN_TARGET_NAME="Raytracing">
+    <configuration name="Raytracing" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../../example.json -w 320 -h 200" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Raytracing" TARGET_NAME="Raytracing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Raytracing" RUN_TARGET_NAME="Raytracing">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -113,7 +125,11 @@
       <workItem from="1701088575751" duration="3038000" />
       <workItem from="1701095807195" duration="76000" />
       <workItem from="1701102950933" duration="6205000" />
-      <workItem from="1701152485419" duration="1000" />
+      <workItem from="1701152485419" duration="258000" />
+      <workItem from="1701153706817" duration="1797000" />
+      <workItem from="1701169627810" duration="2134000" />
+      <workItem from="1701192609955" duration="243000" />
+      <workItem from="1701201776253" duration="3628000" />
     </task>
     <task id="LOCAL-00001" summary="Cmake fix for linux">
       <created>1701073379989</created>
@@ -185,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701109835090</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added json library">
+      <created>1701152698243</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1701152698243</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +235,7 @@
     <MESSAGE value="Changed objects location" />
     <MESSAGE value="Makefile fix for cmake" />
     <MESSAGE value=".gitignore update" />
-    <option name="LAST_COMMIT_MESSAGE" value=".gitignore update" />
+    <MESSAGE value="Added json library" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added json library" />
   </component>
 </project>

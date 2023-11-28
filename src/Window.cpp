@@ -37,7 +37,8 @@ std::vector<sf::Event> Window::eventProcessing() {
       return {};
     }
     else if (event.type == sf::Event::Resized) {
-      changeSize(window_->getSize().x, window_->getSize().y);
+      window_->setSize(sf::Vector2u(width_, height_));
+      //changeSize(window_->getSize().x, window_->getSize().y);
     }
     else {
       events.push_back(event);
