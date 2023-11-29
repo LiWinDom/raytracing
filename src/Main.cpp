@@ -31,10 +31,6 @@ Json parseArgs(const int argc, const char* argv[]) {
     else if (!std::strcmp(argv[i], "--noWindow")) {
       parameters["showWindow"] = false;
     }
-    else if (!std::strcmp(argv[i], "--continue") || !std::strcmp(argv[i], "-c")) {
-      parameters["continueFile"] = argv[i + 1];
-      ++i;
-    }
     else {
       parameters["fileName"] = argv[i];
     }
