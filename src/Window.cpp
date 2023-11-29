@@ -28,6 +28,7 @@ void Window::resetSamples() {
 }
 
 std::vector<sf::Event> Window::eventProcessing() {
+  if (!showWindow_) return {};
   std::vector<sf::Event> events;
   sf::Event event;
 
@@ -48,6 +49,7 @@ std::vector<sf::Event> Window::eventProcessing() {
 }
 
 void Window::draw() const {
+  if (!showWindow_) return;
   glDrawPixels(width_, height_, GL_RGB, GL_UNSIGNED_BYTE, frame_);
   window_->display();
 }

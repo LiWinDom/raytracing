@@ -1,7 +1,7 @@
 #include <chrono>
 #include <fstream>
 #include <iostream>
-#include <stdint.h>
+#include <cstdint>
 
 #include "lib/json.hpp"
 
@@ -102,7 +102,7 @@ void parseObjectsJson(const Json& json, Camera*& camera, std::vector<IObject*>& 
       luminosity = current["Luminosity"].get<bool>();
     }
 
-    // IObject specified
+    // Object specified
     if (name == "Sphere") {
       if (!current.contains("Radius")) {
         throw std::runtime_error(R"("Objects" -> [)" + std::to_string(i) + R"(] - not found "Radius" property. Please check your objects file)");
@@ -155,7 +155,7 @@ int main(const int argc, const char* argv[]) {
 
   // Everything is ok
   std::srand(std::time(nullptr));
-  Window window(args["width"], args["height"]);
+  Window window(args["width"].get<uint16_t>(), args["height"].get<uint16_t>(), args["showWindow"].get<bool>());
   auto start = std::chrono::steady_clock::now();
 
   while (window.isOpen()) {

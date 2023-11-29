@@ -8,20 +8,24 @@
 
 class Window {
  public:
-  Window(uint16_t width, uint16_t height) {
+  Window(const uint16_t width, const uint16_t height, const bool showWindow = true) : showWindow_(showWindow) {
+    changeSize(width, height);
+    if (!showWindow) return;
+
     window_ = new sf::Window(
         sf::VideoMode(width, height),
         "Raytracing",
         sf::Style::Close
     );
 
-    changeSize(width, height);
-
     glEnable(GL_TEXTURE_2D);
     window_->setVerticalSyncEnabled(true);
   }
 
-  bool isOpen() const { return window_->isOpen(); }
+  bool isOpen() const {
+    if (!showWindow_) return true;
+    return window_->isOpen();
+  }
 
   uint16_t getWidth() const { return width_; }
 
@@ -45,6 +49,7 @@ class Window {
   void save(const std::string& fileName) const;
 
  private:
+  bool showWindow_;
   sf::Window* window_;
 
   uint8_t *frame_ = nullptr;
