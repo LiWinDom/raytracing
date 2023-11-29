@@ -3,7 +3,7 @@ set(PROJECT_NAME Raytracing)
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 # Executables
-set(EXECUTABLES src/Main.cpp src/Window.cpp src/Window.h src/Vector.cpp src/Vector.h src/Camera.cpp src/Camera.h src/Object.cpp src/Object.h src/Objects/Sphere.cpp src/Objects/Sphere.h src/Objects/Cube.cpp src/Objects/Cube.h src/lib/json.hpp)
+set(EXECUTABLES src/Main.cpp src/Window.cpp src/Window.h src/Vector.cpp src/Vector.h src/Camera.cpp src/Camera.h src/IObject.cpp src/IObject.h src/Objects/Sphere.cpp src/Objects/Sphere.h src/Objects/Cube.cpp src/Objects/Cube.h src/lib/json.hpp)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin/${CMAKE_BUILD_TYPE})
 
 # Linking

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "../Object.h"
+#include "../IObject.h"
 
-class Cube : public Object {
+class Cube : public IObject {
  public:
   Cube(const Vector& pos = Vector(0), const Vector& size = Vector(1), const Vector& angle = Vector(0))
-      : Object(pos, angle), size_(size) {}
+      : IObject(pos, angle), size_(size) {}
 
 
   double getDistance(const Vector& pos) const override;

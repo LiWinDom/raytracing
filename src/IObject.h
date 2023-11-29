@@ -4,9 +4,9 @@
 
 #include "Vector.h"
 
-class Object {
+class IObject {
  public:
-  Object(const Vector& pos = Vector(0, 0, 0), const Vector& angle = Vector(0, 0, 0))
+  IObject(const Vector& pos = Vector(0, 0, 0), const Vector& angle = Vector(0, 0, 0))
   : pos_(pos), angle_(angle) {}
 
 

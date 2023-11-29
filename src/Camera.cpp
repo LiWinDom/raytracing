@@ -11,7 +11,7 @@ void Camera::rotate(const Vector& angle) {
   angle_ += angle;
 }
 
-void Camera::render(Window &window, const std::vector<Object*> &objects) const {
+void Camera::render(Window &window, const std::vector<IObject*> &objects) const {
   auto func = [&](const size_t threadNum, const size_t totalThreads) {
     for (uint16_t x = 0; x < window.getWidth(); ++x) {
       for (uint16_t y = 0; y < window.getHeight(); ++y) {
@@ -47,7 +47,7 @@ void Camera::render(Window &window, const std::vector<Object*> &objects) const {
   window.draw();
 }
 
-Vector Camera::castRay(const std::vector<Object*> &objects, const Vector& startPos, const Vector& vec, size_t iteration, size_t ignoreIndex) const {
+Vector Camera::castRay(const std::vector<IObject*> &objects, const Vector& startPos, const Vector& vec, size_t iteration, size_t ignoreIndex) const {
   if (iteration > reflectionsLimit_) return Vector(0);
 
   Vector cur = startPos;

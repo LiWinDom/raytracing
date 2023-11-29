@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "Object.h"
+#include "IObject.h"
 #include "Vector.h"
 #include "Window.h"
 
@@ -24,7 +24,7 @@ class Camera {
 
   void rotate(const Vector& angle);
 
-  void render(Window& window, const std::vector<Object*>& objects) const;
+  void render(Window& window, const std::vector<IObject*>& objects) const;
 
  private:
   Vector pos_ = Vector(0, 0, 0), angle_ = Vector(0, 0, 0);
@@ -34,5 +34,5 @@ class Camera {
   size_t reflectionsLimit_ = 256;
   size_t samplesNum_ = 1;
 
-  Vector castRay(const std::vector<Object*>& objects, const Vector& startPos, const Vector& vec, size_t iteration = 0, size_t ignoreIndex = -1) const;
+  Vector castRay(const std::vector<IObject*>& objects, const Vector& startPos, const Vector& vec, size_t iteration = 0, size_t ignoreIndex = -1) const;
 };

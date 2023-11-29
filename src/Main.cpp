@@ -42,7 +42,7 @@ Json parseArgs(const int argc, const char* argv[]) {
   return parameters;
 }
 
-void parseObjectsJson(const Json& json, Camera*& camera, std::vector<Object*>& objects) {
+void parseObjectsJson(const Json& json, Camera*& camera, std::vector<IObject*>& objects) {
   if (!json.contains("Camera")){
     throw std::runtime_error(R"(Cannot find "Camera" object. Please check your objects file)");
   }
@@ -106,7 +106,7 @@ void parseObjectsJson(const Json& json, Camera*& camera, std::vector<Object*>& o
       luminosity = current["Luminosity"].get<bool>();
     }
 
-    // Object specified
+    // IObject specified
     if (name == "Sphere") {
       if (!current.contains("Radius")) {
         throw std::runtime_error(R"("Objects" -> [)" + std::to_string(i) + R"(] - not found "Radius" property. Please check your objects file)");
@@ -133,7 +133,7 @@ void parseObjectsJson(const Json& json, Camera*& camera, std::vector<Object*>& o
       objects[i]->setLuminosity(luminosity);
     }
     else {
-      throw std::runtime_error(R"("Object" -> [)" + std::to_string(i) + R"(] -> "Name" - unknown shape. Please check your objects file)");
+      throw std::runtime_error(R"("IObject" -> [)" + std::to_string(i) + R"(] -> "Name" - unknown shape. Please check your objects file)");
     }
   }
 }
@@ -154,7 +154,7 @@ int main(const int argc, const char* argv[]) {
   objFile.close();
 
   Camera* camera;
-  std::vector<Object*> objects;
+  std::vector<IObject*> objects;
   parseObjectsJson(objectsJson, camera, objects);
 
   // Everything is ok

@@ -26,13 +26,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6443f3e1-3718-4d9f-9f90-7e15305b795e" name="Changes" comment="Added json library">
-      <change afterPath="$PROJECT_DIR$/example.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="6443f3e1-3718-4d9f-9f90-7e15305b795e" name="Changes" comment="No more hardcoded scene">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Window.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +124,8 @@
       <workItem from="1701153706817" duration="1797000" />
       <workItem from="1701169627810" duration="2134000" />
       <workItem from="1701192609955" duration="243000" />
-      <workItem from="1701201776253" duration="3628000" />
+      <workItem from="1701201776253" duration="3899000" />
+      <workItem from="1701241679696" duration="3000" />
     </task>
     <task id="LOCAL-00001" summary="Cmake fix for linux">
       <created>1701073379989</created>
@@ -208,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701152698243</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="No more hardcoded scene">
+      <created>1701205676028</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1701205676028</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +239,7 @@
     <MESSAGE value="Makefile fix for cmake" />
     <MESSAGE value=".gitignore update" />
     <MESSAGE value="Added json library" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added json library" />
+    <MESSAGE value="No more hardcoded scene" />
+    <option name="LAST_COMMIT_MESSAGE" value="No more hardcoded scene" />
   </component>
 </project>
