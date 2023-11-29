@@ -26,8 +26,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6443f3e1-3718-4d9f-9f90-7e15305b795e" name="Changes" comment="--noWindow parameter working">
+    <list default="true" id="6443f3e1-3718-4d9f-9f90-7e15305b795e" name="Changes" comment="example.json fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Camera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Camera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Objects/Cube.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/Cube.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vector.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vector.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +131,7 @@
       <workItem from="1701241679696" duration="438000" />
       <workItem from="1701242360927" duration="1182000" />
       <workItem from="1701276581329" duration="29000" />
-      <workItem from="1701279576859" duration="1000" />
+      <workItem from="1701279576859" duration="1502000" />
     </task>
     <task id="LOCAL-00001" summary="Cmake fix for linux">
       <created>1701073379989</created>
@@ -235,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701243289015</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="example.json fix">
+      <created>1701279822368</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1701279822368</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,6 +277,18 @@
     <MESSAGE value="Renamed Object -&gt; IObject" />
     <MESSAGE value="Deleted unused" />
     <MESSAGE value="--noWindow parameter working" />
-    <option name="LAST_COMMIT_MESSAGE" value="--noWindow parameter working" />
+    <MESSAGE value="example.json fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="example.json fix" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/Main.cpp</url>
+          <line>125</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
