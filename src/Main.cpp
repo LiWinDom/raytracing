@@ -6,6 +6,7 @@
 #include "lib/json.hpp"
 
 #include "Camera.h"
+#include "IO.h"
 #include "Objects/Cube.h"
 #include "Objects/Sphere.h"
 #include "Window.h"
@@ -141,13 +142,31 @@ int main(const int argc, const char* argv[]) {
   if (!args.contains("fileName")) {
     throw std::runtime_error("No object json file specified");
   }
-  std::ifstream objFile(args["fileName"].get<std::string>());
-  if (!objFile.is_open()) {
+  std::ifstream file(args["fileName"].get<std::string>());
+  if (!file.is_open()) {
     throw std::runtime_error("Cannot open file \"" + args["fileName"].get<std::string>() + "\"");
   }
+
   Json objectsJson;
-  objFile >> objectsJson;
-  objFile.close();
+  uint64_t* framesSum = nullptr;
+  size_t approximationTimes;
+  try {
+    file >> objectsJson;
+    file.close();
+  }
+  catch (const nlohmann::json_abi_v3_11_2::detail::parse_error& err) {
+    // Not an object file
+    file.close();
+
+    uint16_t width, height;
+    if (!IO::loadState(args["fileName"].get<std::string>(), objectsJson,
+                       width, height,
+                       framesSum, approximationTimes)) {
+      throw std::runtime_error("Cannot open file \"" + args["fileName"].get<std::string>() + "\"");
+    }
+    args["width"] = width;
+    args["height"] = height;
+  }
 
   Camera* camera;
   std::vector<IObject*> objects;
@@ -156,29 +175,45 @@ int main(const int argc, const char* argv[]) {
   // Everything is ok
   std::srand(std::time(nullptr));
   Window window(args["width"].get<uint16_t>(), args["height"].get<uint16_t>(), args["showWindow"].get<bool>());
+  if (framesSum != nullptr) {
+    window.setApproximation(framesSum, approximationTimes);
+  }
   auto start = std::chrono::steady_clock::now();
 
   while (window.isOpen()) {
     window.eventProcessing();
 
     std::cout << "Rendering: step " << window.getApproximationTimes() + 1;
+
     auto stepStart = std::chrono::steady_clock::now();
     camera->render(window, objects);
-
     auto stepEnd = std::chrono::steady_clock::now();
+
     std::cout << " - done in " << std::chrono::duration_cast<std::chrono::milliseconds>(stepEnd - stepStart).count()
               << "ms";
     std::cout << " (total: " << std::chrono::duration_cast<std::chrono::seconds>(stepEnd - start).count() << "s)"
               << std::endl;
-    window.save("lastest.ppm");
+
+    if (!IO::saveState("lastest.rts", objectsJson,
+                       window.getWidth(), window.getHeight(),
+                       window.getFramesSum(), window.getApproximationTimes())) {
+      std::cout << R"(Failed to save to "lastest.rts")" << std::endl;
+    }
+    if (!IO::savePPM("lastest.ppm", window.getWidth(), window.getHeight(), window.getFrame())) {
+      std::cout << R"(Failed to save to "lastest.ppm")" << std::endl;
+    }
 
     if (window.getApproximationTimes() == 4 || window.getApproximationTimes() == 16 ||
         window.getApproximationTimes() == 64 || window.getApproximationTimes() == 256 ||
         window.getApproximationTimes() == 1024 || window.getApproximationTimes() == 4096 ||
         window.getApproximationTimes() == 16384 || window.getApproximationTimes() == 65536) {
       const std::string fileName = std::to_string(window.getApproximationTimes()) + "_steps.ppm";
-      window.save(fileName);
-      std::cout << "Saved to \"" << fileName << "\"" << std::endl;
+      if (IO::savePPM(fileName, window.getWidth(), window.getHeight(), window.getFrame())) {
+        std::cout << "Saved to \"" << fileName << "\"" << std::endl;
+      }
+      else {
+        std::cout << "Failed to save to \"" << fileName << "\"" << std::endl;
+      }
     }
   }
 }

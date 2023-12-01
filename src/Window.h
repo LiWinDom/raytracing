@@ -31,7 +31,17 @@ class Window {
 
   uint16_t getHeight() const { return height_; }
 
+  const uint8_t* getFrame() const { return frame_; }
+
+  const uint64_t* getFramesSum() const { return framesSum_; }
+
   size_t getApproximationTimes() const { return approximationTimes_; }
+
+  void setApproximation(uint64_t* framesSum, const size_t approximationTimes) {
+    delete framesSum_;
+    framesSum_ = framesSum;
+    approximationTimes_ = approximationTimes;
+  };
 
 
   void setPixel(uint16_t x, uint16_t y, uint8_t red, uint8_t green, uint8_t blue);
@@ -45,8 +55,6 @@ class Window {
   std::vector<sf::Event> eventProcessing();
 
   void draw() const;
-
-  void save(const std::string& fileName) const;
 
  private:
   bool showWindow_;

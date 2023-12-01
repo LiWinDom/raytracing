@@ -54,21 +54,6 @@ void Window::draw() const {
   window_->display();
 }
 
-void Window::save(const std::string& fileName) const {
-  std::ofstream ofs(fileName);
-  ofs << "P6\n" << width_ << " " << height_ << "\n255\n";
-  for (size_t i = 0; i < height_; ++i) {
-    for (size_t j = 0; j < width_; ++j) {
-      size_t index = ((height_ - i - 1) * width_ + j) * 3;
-      uint8_t red = frame_[index];
-      uint8_t green = frame_[index + 1];
-      uint8_t blue = frame_[index + 2];
-      ofs << red << green << blue;
-    }
-  }
-  ofs.close();
-}
-
 
 void Window::changeSize(uint16_t width, uint16_t height) {
   delete frame_;
