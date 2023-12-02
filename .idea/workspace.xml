@@ -26,14 +26,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6443f3e1-3718-4d9f-9f90-7e15305b795e" name="Changes" comment="math.h -&gt; cmath">
-      <change afterPath="$PROJECT_DIR$/src/IO.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IO.h" afterDir="false" />
+    <list default="true" id="6443f3e1-3718-4d9f-9f90-7e15305b795e" name="Changes" comment="IO class fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Window.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Window.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +39,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -110,7 +106,7 @@
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Raytracing" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="./lastest.frm" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Raytracing" TARGET_NAME="Raytracing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Raytracing" RUN_TARGET_NAME="Raytracing">
+    <configuration name="Raytracing" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../../example.json -w 320 -h 200" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Raytracing" TARGET_NAME="Raytracing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Raytracing" RUN_TARGET_NAME="Raytracing">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -142,7 +138,10 @@
       <workItem from="1701279576859" duration="1780000" />
       <workItem from="1701331745909" duration="378000" />
       <workItem from="1701453370586" duration="71000" />
-      <workItem from="1701453460999" duration="4714000" />
+      <workItem from="1701453460999" duration="4850000" />
+      <workItem from="1701522656713" duration="286000" />
+      <workItem from="1701523132460" duration="18000" />
+      <workItem from="1701530902568" duration="849000" />
     </task>
     <task id="LOCAL-00001" summary="Cmake fix for linux">
       <created>1701073379989</created>
@@ -263,7 +262,21 @@
       <option name="project" value="LOCAL" />
       <updated>1701281282416</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Saving current state to be able to continue rendering after program closing">
+      <created>1701458325990</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1701458325990</updated>
+    </task>
+    <task id="LOCAL-00019" summary="IO class fix">
+      <created>1701531666737</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1701531666737</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,6 +310,8 @@
     <MESSAGE value="--noWindow parameter working" />
     <MESSAGE value="example.json fix" />
     <MESSAGE value="math.h -&gt; cmath" />
-    <option name="LAST_COMMIT_MESSAGE" value="math.h -&gt; cmath" />
+    <MESSAGE value="Saving current state to be able to continue rendering after program closing" />
+    <MESSAGE value="IO class fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="IO class fix" />
   </component>
 </project>

@@ -47,14 +47,19 @@ FetchContent_MakeAvailable(SFML)
 include_directories(${SFML_INCLUDE_DIR})
 
 # Adding executables
-add_executable(${PROJECT_NAME} ${EXECUTABLES})
+if (CMAKE_BUILD_TYPE STREQUAL "Release" AND WIN32)
+  add_executable(${PROJECT_NAME} WIN32 ${EXECUTABLES})
+else ()
+  add_executable(${PROJECT_NAME} ${EXECUTABLES})
+endif ()
 
 # It's recommended to build frameworks on MacOS
 if (APPLE)
   set(SFML_BUILD_FRAMEWORKS TRUE)
-elseif(WIN32)
+elseif (WIN32)
   set(LINK_FLAGS -static)
-endif()
+  set(SFML_STATIC_LIBRARIES TRUE)
+endif ()
 
 # Configuring executable
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
@@ -62,7 +67,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ${SFML_LIBRARIES} ${LINK_FLAGS})
 set_target_properties(${PROJECT_NAME} PROPERTIES
     OUTPUT_NAME "${PROJECT_NAME}-${CMAKE_SYSTEM_NAME}"
     CLEAN_DIRECT_OUTPUT 1
-    )
+)
 
 # Copying OpenAL on Windows
 if (WIN32)
