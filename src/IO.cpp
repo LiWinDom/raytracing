@@ -18,7 +18,7 @@ bool IO::savePPM(const std::string& fileName, const uint16_t width, const uint16
 }
 
 bool IO::saveState(const std::string& fileName, const Json& objects,
-               const const uint16_t width, const uint16_t height,
+               const uint16_t width, const uint16_t height,
                const uint64_t* framesSum, const size_t& approximationTimes) {
   std::ofstream file(fileName);
   if (!file.is_open()) return false;
