@@ -194,13 +194,15 @@ int main(const int argc, const char* argv[]) {
     std::cout << " (total: " << std::chrono::duration_cast<std::chrono::seconds>(stepEnd - start).count() << "s)"
               << std::endl;
 
-    if (!IO::saveState("lastest.rts", objectsJson,
+    std::cout << "Saving state..." << "\r";
+    if (!IO::saveState("latest.rts", objectsJson,
                        window.getWidth(), window.getHeight(),
                        window.getFramesSum(), window.getApproximationTimes())) {
-      std::cout << R"(Failed to save to "lastest.rts")" << std::endl;
+      std::cout << R"(Failed to save to "latest.rts")" << std::endl;
     }
-    if (!IO::savePPM("lastest.ppm", window.getWidth(), window.getHeight(), window.getFrame())) {
-      std::cout << R"(Failed to save to "lastest.ppm")" << std::endl;
+    std::cout << "Saving image..." << "\r";
+    if (!IO::savePPM("latest.ppm", window.getWidth(), window.getHeight(), window.getFrame())) {
+      std::cout << R"(Failed to save to "latest.ppm")" << std::endl;
     }
 
     if (window.getApproximationTimes() == 4 || window.getApproximationTimes() == 16 ||
