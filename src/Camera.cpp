@@ -68,14 +68,6 @@ Vector Camera::castRay(const std::vector<IObject*> &objects, const Vector& start
 
     if (minIndex == -1) {
       // If the ray is too far away
-      for (size_t i = 0; i < objects.size(); ++i) {
-        if (i == ignoreIndex) continue;
-        double distance = objects[i]->getDistance(cur);
-        if (distance < minDistance) {
-          minDistance = distance;
-          minIndex = i;
-        }
-      }
       return Vector(0);
     }
 
