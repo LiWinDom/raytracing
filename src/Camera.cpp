@@ -90,10 +90,10 @@ Vector Camera::castRay(const std::vector<IObject*> &objects, const Vector& start
         diffusion.rotate(Vector(std::rand(), std::rand(), std::rand()));
         if (diffusion.dot(normal) < 0) diffusion *= -1;
 
-        Vector newVec = (diffusion - reflection) * objects[minIndex]->getDiffusionLevel() + reflection;
-        newVec.normalize();
+        reflection = (diffusion - reflection) * objects[minIndex]->getDiffusionLevel() + reflection;
+        reflection.normalize();
 
-        reflectedColor += castRay(objects, cur, newVec, iteration + 1, minIndex);
+        reflectedColor += castRay(objects, cur, reflection, iteration + 1, minIndex);
       }
       reflectedColor /= _samplesNum;
 
