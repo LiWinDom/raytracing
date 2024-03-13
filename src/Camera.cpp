@@ -71,11 +71,8 @@ Vector Camera::castRay(const std::vector<IObject*> &objects, const Vector& start
       return Vector(0);
     }
 
-    // Moving our point
-    cur += vec * minDistance;
-
-    // Checking if we are still hitting nearest object
-    if (objects[minIndex]->getDistance(cur) <= _minDistance) {
+    // Checking if we are hitting nearest object
+    if (minDistance <= _minDistance) {
       if (objects[minIndex]->isLuminosity()) {
         return objects[minIndex]->getColor();
       }
@@ -93,11 +90,14 @@ Vector Camera::castRay(const std::vector<IObject*> &objects, const Vector& start
         reflection = (diffusion - reflection) * objects[minIndex]->getDiffusionLevel() + reflection;
         reflection.normalize();
 
-        reflectedColor += castRay(objects, cur, reflection, iteration + 1, minIndex);
+        reflectedColor += castRay(objects, cur + reflection * _minDistance, reflection, iteration + 1, minIndex);
       }
       reflectedColor /= _samplesNum;
 
       return objects[minIndex]->getColor() * reflectedColor;
     }
+
+    // If not hotting any object - moving our point
+    cur += vec * minDistance;
   }
 }
