@@ -18,8 +18,12 @@ void Camera::render(Window &window, const std::vector<IObject*> &objects) const 
       for (uint16_t y = 0; y < window.getHeight(); ++y) {
         if ((x * window.getHeight() + y) % totalThreads != threadNum) continue;
 
-        Vector vec((x - window.getWidth() / 2.0) / (window.getWidth() / 2.0),
-                   (y - window.getHeight() / 2.0) / (window.getWidth() / 2.0), 1);
+
+        Vector vec((x - window.getWidth() / 2.0) / (window.getWidth() / 2.0)
+                      + ((std::rand() % window.getWidth() - window.getWidth() / 2.0) / (window.getWidth() / 2.0) / window.getWidth()) * _smoothingRadius,
+                   (y - window.getHeight() / 2.0) / (window.getWidth() / 2.0)
+                      + ((std::rand() % window.getWidth() - window.getWidth() / 2.0) / (window.getWidth() / 2.0) / window.getWidth()) * _smoothingRadius,
+                    1);
         vec.rotate(_angle);
         vec.normalize();
         Vector color = castRay(objects, _pos, vec);

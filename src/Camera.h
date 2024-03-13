@@ -34,5 +34,7 @@ class Camera {
   size_t _reflectionsLimit = 256;
   size_t _samplesNum = 1;
 
+  double _smoothingRadius = 1; // Every pixel can be "moved" by ± _smoothingRadius / 2
+
   Vector castRay(const std::vector<IObject*>& objects, const Vector& startPos, const Vector& vec, size_t iteration = 0, size_t ignoreIndex = -1) const;
 };
