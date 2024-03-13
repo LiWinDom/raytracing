@@ -5,7 +5,7 @@
 class Sphere : public IObject {
  public:
   Sphere(const Vector& pos = Vector(0), const double radius = 1)
-  : IObject(pos, Vector(0)), radius_(radius) {}
+  : IObject(pos, Vector(0)), _radius(radius) {}
 
 
   double getDistance(const Vector& pos) const override;
@@ -13,5 +13,5 @@ class Sphere : public IObject {
   Vector getNormal(const Vector& pos) const override;
 
  private:
-  double radius_;
+  double _radius;
 };

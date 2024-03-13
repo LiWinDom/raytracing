@@ -2,22 +2,22 @@
 
 class Vector {
  public:
-  Vector(const double x, const double y, const double z) : x_(x), y_(y), z_(z) {}
+  Vector(const double x, const double y, const double z) : _x(x), _y(y), _z(z) {}
 
   Vector(const double num) : Vector(num, num, num) {}
 
 
-  double getX() const { return x_; }
+  double getX() const { return _x; }
 
-  void setX(const double x) { x_ = x; }
+  void setX(const double x) { _x = x; }
 
-  double getY() const { return y_; }
+  double getY() const { return _y; }
 
-  void setY(const double y) { y_ = y; }
+  void setY(const double y) { _y = y; }
 
-  double getZ() const { return z_; }
+  double getZ() const { return _z; }
 
-  void setZ(const double z) { z_ = z; }
+  void setZ(const double z) { _z = z; }
 
 
   bool operator== (const Vector& other) const;
@@ -73,5 +73,5 @@ class Vector {
   Vector rotate(const Vector& angle);
 
  private:
-  double x_, y_, z_;
+  double _x, _y, _z;
 };

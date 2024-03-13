@@ -5,7 +5,7 @@
 class Cube : public IObject {
  public:
   Cube(const Vector& pos = Vector(0), const Vector& size = Vector(1), const Vector& angle = Vector(0))
-      : IObject(pos, angle), size_(size) {}
+      : IObject(pos, angle), _size(size) {}
 
 
   double getDistance(const Vector& pos) const override;
@@ -13,5 +13,5 @@ class Cube : public IObject {
   Vector getNormal(const Vector& pos) const override;
 
  private:
-  Vector size_;
+  Vector _size;
 };

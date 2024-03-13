@@ -6,45 +6,45 @@
   "Objects": [
     {
       "Name": "Cube",
-      "Position": {"x": -5, "y": 5, "z": 2},
-      "Size": {"x": 0, "y": 10, "z": 16},
+      "Position": {"x": -6, "y": 5, "z": 2},
+      "Size": {"x": 2, "y": 10, "z": 16},
 
       "Color": {"red": 255, "green": 192, "blue": 127},
       "DiffusionLevel": 0.9
     },
     {
       "Name": "Cube",
-      "Position": {"x": 5, "y": 5, "z": 2},
-      "Size": {"x": 0, "y": 10, "z": 16},
+      "Position": {"x": 6, "y": 5, "z": 2},
+      "Size": {"x": 2, "y": 10, "z": 16},
 
       "Color": {"red": 127, "green": 192, "blue": 255},
       "DiffusionLevel": 0.9
     },
     {
       "Name": "Cube",
-      "Position": {"x": 0, "y": 0, "z": 2},
-      "Size": {"x": 10, "y": 0, "z": 16},
+      "Position": {"x": 0, "y": -1, "z": 2},
+      "Size": {"x": 10, "y": 2, "z": 16},
 
       "DiffusionLevel": 0.9
     },
     {
       "Name": "Cube",
-      "Position": {"x": 0, "y": 10, "z": 2},
-      "Size": {"x": 10, "y": 0, "z": 16},
+      "Position": {"x": 0, "y": 11, "z": 2},
+      "Size": {"x": 10, "y": 2, "z": 16},
 
       "Luminosity": true
     },
     {
       "Name": "Cube",
-      "Position": {"x": 0, "y": 5, "z": 10},
-      "Size": {"x": 10, "y": 10, "z": 0},
+      "Position": {"x": 0, "y": 5, "z": 11},
+      "Size": {"x": 10, "y": 10, "z": 2},
 
       "DiffusionLevel": 0.9
     },
     {
       "Name": "Cube",
-      "Position": {"x": 0, "y": 5, "z": -6},
-      "Size": {"x": 10, "y": 10, "z": 0},
+      "Position": {"x": 0, "y": 5, "z": -7},
+      "Size": {"x": 10, "y": 10, "z": 2},
 
       "DiffusionLevel": 0.9
     },

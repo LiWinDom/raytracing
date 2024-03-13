@@ -4,8 +4,8 @@
 #include "Cube.h"
 
 double Cube::getDistance(const Vector &pos) const {
-  Vector newPos = (pos - pos_).rotate(-angle_).abs();
-  newPos -= size_ / 2;
+  Vector newPos = (pos - _pos).rotate(-_angle).abs();
+  newPos -= _size / 2;
 
   if (newPos.getX() < 0) {
     if (newPos.getY() < 0) {
@@ -35,25 +35,25 @@ double Cube::getDistance(const Vector &pos) const {
 }
 
 Vector Cube::getNormal(const Vector &pos) const {
-  Vector newPos = (pos - pos_).rotate(-angle_);
+  Vector newPos = (pos - _pos).rotate(-_angle);
   Vector absPos = newPos;
-  absPos = absPos.abs() - size_ / 2;
+  absPos = absPos.abs() - _size / 2;
   absPos.abs();
 
   if (absPos.getX() < absPos.getY() && absPos.getX() < absPos.getZ()) {
     if (newPos.getX() < 0) {
-      return Vector(-1, 0, 0).rotate(angle_);
+      return Vector(-1, 0, 0).rotate(_angle);
     }
-    return Vector(1, 0, 0).rotate(angle_);
+    return Vector(1, 0, 0).rotate(_angle);
   }
   if (absPos.getY() < absPos.getZ()) {
     if (newPos.getY() < 0) {
-      return Vector(0, -1, 0).rotate(angle_);
+      return Vector(0, -1, 0).rotate(_angle);
     }
-    return Vector(0, 1, 0).rotate(angle_);
+    return Vector(0, 1, 0).rotate(_angle);
   }
   if (newPos.getZ() < 0) {
-    return Vector(0, 0, -1).rotate(angle_);
+    return Vector(0, 0, -1).rotate(_angle);
   }
-  return Vector(0, 0, 1).rotate(angle_);
+  return Vector(0, 0, 1).rotate(_angle);
 }

@@ -8,39 +8,39 @@
 
 class Window {
  public:
-  Window(const uint16_t width, const uint16_t height, const bool showWindow = true) : showWindow_(showWindow) {
+  Window(const uint16_t width, const uint16_t height, const bool showWindow = true) : _showWindow(showWindow) {
     changeSize(width, height);
     if (!showWindow) return;
 
-    window_ = new sf::Window(
+    _window = new sf::Window(
         sf::VideoMode(width, height),
         "Raytracing",
         sf::Style::Close
     );
 
     glEnable(GL_TEXTURE_2D);
-    window_->setVerticalSyncEnabled(true);
+    _window->setVerticalSyncEnabled(true);
   }
 
   bool isOpen() const {
-    if (!showWindow_) return true;
-    return window_->isOpen();
+    if (!_showWindow) return true;
+    return _window->isOpen();
   }
 
-  uint16_t getWidth() const { return width_; }
+  uint16_t getWidth() const { return _width; }
 
-  uint16_t getHeight() const { return height_; }
+  uint16_t getHeight() const { return _height; }
 
-  const uint8_t* getFrame() const { return frame_; }
+  const uint8_t* getFrame() const { return _frame; }
 
-  const uint64_t* getFramesSum() const { return framesSum_; }
+  const uint64_t* getFramesSum() const { return _framesSum; }
 
-  size_t getApproximationTimes() const { return approximationTimes_; }
+  size_t getApproximationTimes() const { return _approximationTimes; }
 
   void setApproximation(uint64_t* framesSum, const size_t approximationTimes) {
-    delete framesSum_;
-    framesSum_ = framesSum;
-    approximationTimes_ = approximationTimes;
+    delete _framesSum;
+    _framesSum = framesSum;
+    _approximationTimes = approximationTimes;
   };
 
 
@@ -57,14 +57,14 @@ class Window {
   void draw() const;
 
  private:
-  bool showWindow_;
-  sf::Window* window_;
+  bool _showWindow;
+  sf::Window* _window;
 
-  uint8_t *frame_ = nullptr;
-  uint16_t width_ = 0, height_ = 0;
+  uint8_t *_frame = nullptr;
+  uint16_t _width = 0, _height = 0;
 
-  uint64_t *framesSum_ = nullptr;
-  size_t approximationTimes_ = 0;
+  uint64_t *_framesSum = nullptr;
+  size_t _approximationTimes = 0;
 
   void changeSize(uint16_t width, uint16_t height);
 };

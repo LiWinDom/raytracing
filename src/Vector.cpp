@@ -4,7 +4,7 @@
 #include "Vector.h"
 
 bool Vector::operator== (const Vector& other) const {
-  return x_ == other.x_ && y_ == other.y_ && z_ == other.z_;
+  return _x == other._x && _y == other._y && _z == other._z;
 }
 
 bool Vector::operator!= (const Vector& other) const {
@@ -29,19 +29,19 @@ bool Vector::operator>= (const Vector& other) const {
 
 
 Vector Vector::operator+ (const Vector& other) const {
-  return Vector(x_ + other.x_, y_ + other.y_, z_ + other.z_);
+  return Vector(_x + other._x, _y + other._y, _z + other._z);
 }
 
 Vector Vector::operator- (const Vector& other) const {
-  return Vector(x_ - other.x_, y_ - other.y_, z_ - other.z_);
+  return Vector(_x - other._x, _y - other._y, _z - other._z);
 }
 
 Vector Vector::operator- () const {
-  return Vector(-x_, -y_, -z_);
+  return Vector(-_x, -_y, -_z);
 }
 
 Vector Vector::operator* (const Vector& other) const {
-  return Vector(x_ * other.x_, y_ * other.y_, z_ * other.z_);
+  return Vector(_x * other._x, _y * other._y, _z * other._z);
 }
 
 Vector Vector::operator* (const double other) const {
@@ -49,7 +49,7 @@ Vector Vector::operator* (const double other) const {
 }
 
 Vector Vector::operator/ (const Vector& other) const {
-  return Vector(x_ / other.x_, y_ / other.y_, z_ / other.z_);
+  return Vector(_x / other._x, _y / other._y, _z / other._z);
 }
 
 Vector Vector::operator/ (const double other) const {
@@ -83,48 +83,48 @@ Vector Vector::operator/= (const double other) {
 
 
 double Vector::getLength() const {
-  return std::sqrt(x_ * x_ + y_ * y_ + z_ * z_);
+  return std::sqrt(_x * _x + _y * _y + _z * _z);
 }
 
 double Vector::dot(const Vector& other) const {
-  return x_ * other.x_ + y_ * other.y_ + z_ * other.z_;
+  return _x * other._x + _y * other._y + _z * other._z;
 }
 
 Vector Vector::abs() {
-  x_ = std::abs(x_);
-  y_ = std::abs(y_);
-  z_ = std::abs(z_);
+  _x = std::abs(_x);
+  _y = std::abs(_y);
+  _z = std::abs(_z);
   return *this;
 }
 
 Vector Vector::normalize() {
   const double length = getLength();
-  x_ /= length;
-  y_ /= length;
-  z_ /= length;
+  _x /= length;
+  _y /= length;
+  _z /= length;
   return *this;
 }
 
 Vector Vector::rotate(const Vector& angle) {
   Vector rotX = Vector(
-      x_ * std::cos(angle.y_) * std::cos(angle.z_),
-      y_ * (std::sin(angle.x_) * std::sin(angle.y_) * std::cos(angle.z_) - std::cos(angle.x_) * std::sin(angle.z_)),
-      z_ * (std::cos(angle.x_) * std::sin(angle.y_) * std::cos(angle.z_) + std::sin(angle.x_) * std::sin(angle.z_))
+      _x * std::cos(angle._y) * std::cos(angle._z),
+      _y * (std::sin(angle._x) * std::sin(angle._y) * std::cos(angle._z) - std::cos(angle._x) * std::sin(angle._z)),
+      _z * (std::cos(angle._x) * std::sin(angle._y) * std::cos(angle._z) + std::sin(angle._x) * std::sin(angle._z))
   );
   Vector rotY = Vector(
-      x_ * std::cos(angle.y_) * std::sin(angle.z_),
-      y_ * (std::sin(angle.x_) * std::sin(angle.y_) * std::sin(angle.z_) + std::cos(angle.x_) * std::cos(angle.z_)),
-      z_ * (std::cos(angle.x_) * std::sin(angle.y_) * std::sin(angle.z_) - std::sin(angle.x_) * std::cos(angle.z_))
+      _x * std::cos(angle._y) * std::sin(angle._z),
+      _y * (std::sin(angle._x) * std::sin(angle._y) * std::sin(angle._z) + std::cos(angle._x) * std::cos(angle._z)),
+      _z * (std::cos(angle._x) * std::sin(angle._y) * std::sin(angle._z) - std::sin(angle._x) * std::cos(angle._z))
   );
   Vector rotZ = Vector(
-      x_ * (-std::sin(angle.y_)),
-      y_ * std::sin(angle.x_) * std::cos(angle.y_),
-      z_ * std::cos(angle.x_) * std::cos(angle.y_)
+      _x * (-std::sin(angle._y)),
+      _y * std::sin(angle._x) * std::cos(angle._y),
+      _z * std::cos(angle._x) * std::cos(angle._y)
   );
 
-  x_ = rotX.x_ + rotX.y_ + rotX.z_;
-  y_ = rotY.x_ + rotY.y_ + rotY.z_;
-  z_ = rotZ.x_ + rotZ.y_ + rotZ .z_;
+  _x = rotX._x + rotX._y + rotX._z;
+  _y = rotY._x + rotY._y + rotY._z;
+  _z = rotZ._x + rotZ._y + rotZ ._z;
 
   return *this;
 }

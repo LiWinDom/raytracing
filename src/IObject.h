@@ -7,38 +7,38 @@
 class IObject {
  public:
   IObject(const Vector& pos = Vector(0, 0, 0), const Vector& angle = Vector(0, 0, 0))
-  : pos_(pos), angle_(angle) {}
+  : _pos(pos), _angle(angle) {}
 
 
-  Vector getPos() const { return pos_; }
+  Vector getPos() const { return _pos; }
 
-  void setPos(const Vector& pos) { pos_ = pos; }
+  void setPos(const Vector& pos) { _pos = pos; }
 
-  Vector getAngle() const { return angle_; }
+  Vector getAngle() const { return _angle; }
 
-  void setAngle(const Vector& angle) { angle_ = angle; }
+  void setAngle(const Vector& angle) { _angle = angle; }
 
-  bool isLuminosity() const { return isLuminosity_; }
+  bool isLuminosity() const { return _isLuminosity; }
 
-  void setLuminosity(const bool isLuminosity) { isLuminosity_ = isLuminosity; }
+  void setLuminosity(const bool isLuminosity) { _isLuminosity = isLuminosity; }
 
-  Vector getColor() const { return color_; }
+  Vector getColor() const { return _color; }
 
-  uint8_t getRed() const { return color_.getX() * 255; }
+  uint8_t getRed() const { return _color.getX() * 255; }
 
-  uint8_t getGreen() const { return color_.getY() * 255; }
+  uint8_t getGreen() const { return _color.getY() * 255; }
 
-  uint8_t getBlue() const { return color_.getZ() * 255; }
+  uint8_t getBlue() const { return _color.getZ() * 255; }
 
-  void setColor(const Vector& color) { color_ = color; }
+  void setColor(const Vector& color) { _color = color; }
 
   void setColor(const uint8_t red, const uint8_t green, const uint8_t blue) {
     setColor(Vector(red / 255.0, green / 255.0, blue / 255.0));
   }
 
-  double getDiffusionLevel() const { return diffusionLevel_; }
+  double getDiffusionLevel() const { return _diffusionLevel; }
 
-  void setDiffusionLevel(const double diffusionLevel) { diffusionLevel_ = diffusionLevel; }
+  void setDiffusionLevel(const double diffusionLevel) { _diffusionLevel = diffusionLevel; }
 
 
   virtual double getDistance(const Vector& pos) const {};
@@ -46,9 +46,9 @@ class IObject {
   virtual Vector getNormal(const Vector& pos) const {};
 
  protected:
-  Vector pos_, angle_;
-  bool isLuminosity_ = false;
+  Vector _pos, _angle;
+  bool _isLuminosity = false;
 
-  Vector color_ = Vector(1, 1, 1);
-  double diffusionLevel_ = 0;
+  Vector _color = Vector(1, 1, 1);
+  double _diffusionLevel = 0;
 };
