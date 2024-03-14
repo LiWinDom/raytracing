@@ -174,6 +174,7 @@ int main(const int argc, const char* argv[]) {
 
   // Everything is ok
   std::srand(std::time(nullptr));
+  std::cout.setf(std::ios::unitbuf);
   Window window(args["width"].get<uint16_t>(), args["height"].get<uint16_t>(), args["showWindow"].get<bool>());
   if (framesSum != nullptr) {
     window.setApproximation(framesSum, approximationTimes);
@@ -181,8 +182,6 @@ int main(const int argc, const char* argv[]) {
   auto start = std::chrono::steady_clock::now();
 
   while (window.isOpen()) {
-    window.eventProcessing();
-
     std::cout << "Rendering: step " << window.getApproximationTimes() + 1;
 
     auto stepStart = std::chrono::steady_clock::now();
@@ -192,30 +191,37 @@ int main(const int argc, const char* argv[]) {
     std::cout << " - done in " << std::chrono::duration_cast<std::chrono::milliseconds>(stepEnd - stepStart).count()
               << "ms";
     std::cout << " (total: " << std::chrono::duration_cast<std::chrono::seconds>(stepEnd - start).count() << "s)"
-              << std::endl;
+              << '\n';
 
-    std::cout << "Saving state..." << "\r";
+    std::cout << "Saving state...\r";
     if (!IO::saveState("latest.rts", objectsJson,
                        window.getWidth(), window.getHeight(),
                        window.getFramesSum(), window.getApproximationTimes())) {
-      std::cout << R"(Failed to save to "latest.rts")" << std::endl;
+      std::cout << R"(Failed to save to "latest.rts")" << '\n';
     }
-    std::cout << "Saving image..." << "\r";
+    std::cout << "Saving image...\r";
     if (!IO::savePPM("latest.ppm", window.getWidth(), window.getHeight(), window.getFrame())) {
-      std::cout << R"(Failed to save to "latest.ppm")" << std::endl;
+      std::cout << R"(Failed to save to "latest.ppm")" << '\n';
     }
 
-    if (window.getApproximationTimes() == 4 || window.getApproximationTimes() == 16 ||
-        window.getApproximationTimes() == 64 || window.getApproximationTimes() == 256 ||
-        window.getApproximationTimes() == 1024 || window.getApproximationTimes() == 4096 ||
-        window.getApproximationTimes() == 16384 || window.getApproximationTimes() == 65536) {
+    switch (window.getApproximationTimes()) {
+    case 4:
+    case 16:
+    case 64:
+    case 256:
+    case 1024:
+    case 4096:
+    case 16386:
+    case 65536:
       const std::string fileName = std::to_string(window.getApproximationTimes()) + "_steps.ppm";
       if (IO::savePPM(fileName, window.getWidth(), window.getHeight(), window.getFrame())) {
-        std::cout << "Saved to \"" << fileName << "\"" << std::endl;
+        std::cout << "Saved to \"" << fileName << "\"" << '\n';
       }
       else {
-        std::cout << "Failed to save to \"" << fileName << "\"" << std::endl;
+        std::cout << "Failed to save to \"" << fileName << "\"" << '\n';
       }
     }
+
+    window.eventProcessing();
   }
 }
