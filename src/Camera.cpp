@@ -20,9 +20,9 @@ void Camera::render(Window &window, const std::vector<IObject*> &objects) const 
 
 
         Vector vec((x - window.getWidth() / 2.0) / (window.getWidth() / 2.0)
-                      + ((std::rand() % window.getWidth() - window.getWidth() / 2.0) / (window.getWidth() / 2.0) / window.getWidth()) * _smoothingRadius,
+                      + ((std::rand() - RAND_MAX / 2.0) / (RAND_MAX / 2.0) / window.getWidth()) * _smoothingRadius,
                    (y - window.getHeight() / 2.0) / (window.getWidth() / 2.0)
-                      + ((std::rand() % window.getWidth() - window.getWidth() / 2.0) / (window.getWidth() / 2.0) / window.getWidth()) * _smoothingRadius,
+                      + ((std::rand() - RAND_MAX / 2.0) / (RAND_MAX / 2.0) / window.getWidth()) * _smoothingRadius,
                     1);
         vec.rotate(_angle);
         vec.normalize();
