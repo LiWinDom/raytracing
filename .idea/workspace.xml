@@ -26,10 +26,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb098ab6-bca6-4715-a632-b8deb0dd2426" name="Changes" comment="Added smoothing setting to camera&#10;via small rotation of vector from camera">
+    <list default="true" id="bb098ab6-bca6-4715-a632-b8deb0dd2426" name="Changes" comment="Better smoothing random, i guess">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example.json" beforeDir="false" afterPath="$PROJECT_DIR$/example.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/7.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/images/7.ppm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +42,9 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -80,6 +83,11 @@
   }
 }</component>
   <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Raytracing" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../../example.json --width 320 --height 200" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Raytracing" TARGET_NAME="Raytracing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Raytracing" RUN_TARGET_NAME="Raytracing">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -99,7 +107,9 @@
       <workItem from="1710319138226" duration="2816000" />
       <workItem from="1710326721134" duration="3818000" />
       <workItem from="1710336605530" duration="8170000" />
-      <workItem from="1710361502133" duration="296000" />
+      <workItem from="1710361502133" duration="320000" />
+      <workItem from="1710404317122" duration="100000" />
+      <workItem from="1710406155948" duration="2252000" />
     </task>
     <task id="LOCAL-00001" summary="Bugfix with black pixels&#10;Some naming change">
       <option name="closed" value="true" />
@@ -149,7 +159,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710351505563</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Changed color in example.json">
+      <option name="closed" value="true" />
+      <created>1710361860674</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1710361860674</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Better smoothing random, i guess">
+      <option name="closed" value="true" />
+      <created>1710404392162</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1710404392162</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +193,8 @@
     <MESSAGE value="Deleted debug code" />
     <MESSAGE value="Small render logic change" />
     <MESSAGE value="Added smoothing setting to camera&#10;via small rotation of vector from camera" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added smoothing setting to camera&#10;via small rotation of vector from camera" />
+    <MESSAGE value="Changed color in example.json" />
+    <MESSAGE value="Better smoothing random, i guess" />
+    <option name="LAST_COMMIT_MESSAGE" value="Better smoothing random, i guess" />
   </component>
 </project>
