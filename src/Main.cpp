@@ -1,3 +1,9 @@
+#ifdef __APPLE__
+  #include <OpenCL/cl.h>
+#else
+  #include <CL/cl.h>
+#endif
+
 #include <chrono>
 #include <fstream>
 #include <iostream>
@@ -135,7 +141,68 @@ void parseObjectsJson(const Json& json, Camera*& camera, std::vector<IObject*>& 
   }
 }
 
+cl_device_id findDevice() {
+  cl_platform_id platform;
+  cl_device_id device;
+  cl_int err = 0;
+
+  err |= clGetPlatformIDs(1, &platform, NULL);
+  err |= clGetDeviceIDs(platform, CL_DEVICE_TYPE_GPU, 1, &device, NULL);
+  if (err == CL_DEVICE_NOT_FOUND) {
+    err = clGetDeviceIDs(platform, CL_DEVICE_TYPE_CPU, 1, &device, NULL);
+  }
+
+  if (err) throw;
+  return device;
+}
+
+cl_program buildProgram(cl_context ctx, cl_device_id device) {
+  int err = 0;
+
+  std::ifstream t("../../src/kernel.cl");
+  std::string src = std::string(std::istreambuf_iterator<char>(t), std::istreambuf_iterator<char>());
+  const char* src_text = src.data();
+  size_t src_length = src.size();
+
+  cl_program program = clCreateProgramWithSource(ctx, 1, &src_text, &src_length, &err);
+  err |= clBuildProgram(program, 0, NULL, NULL, NULL, NULL);
+
+  if (err) throw;
+  return program;
+}
+
+size_t align(size_t x, size_t y) {
+  return(x + y - 1) / y * y;
+}
+
 int main(const int argc, const char* argv[]) {
+  cl_int err = 0;
+  auto device = findDevice();
+  auto context = clCreateContext(NULL, 1, &device, NULL, NULL, &err);
+
+  cl_program program = buildProgram(context, device);
+  cl_kernel kernel = clCreateKernel(program, "test", &err);
+  cl_command_queue queue = clCreateCommandQueue(context, device, 0, &err);
+  cl_mem mem = clCreateBuffer(context, CL_MEM_WRITE_ONLY, sizeof(cl_int), NULL, NULL);
+
+  cl_int c = 0;
+  std::cout << c << '\n';
+  err |= clSetKernelArg(kernel, 0, sizeof(cl_mem), &mem);
+  size_t local_size[2] = {256, 1};
+  size_t global_size[2] = {align(1, local_size[0]), align(1, local_size[1])};
+  err |= clEnqueueNDRangeKernel(queue, kernel, 2, NULL, global_size, local_size, 0, NULL, NULL);
+  err |= clEnqueueReadBuffer(queue, mem, CL_TRUE, 0, sizeof(cl_int), &c, 0, NULL, NULL);
+  clFinish(queue);
+
+  clReleaseKernel(kernel);
+  clReleaseMemObject(mem);
+  clReleaseCommandQueue(queue);
+  clReleaseProgram(program);
+  clReleaseContext(context);
+
+  std::cout << c << '\n';
+  return 0;
+
   Json args = parseArgs(argc, argv);
 
   // Reading objects file

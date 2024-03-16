@@ -26,10 +26,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb098ab6-bca6-4715-a632-b8deb0dd2426" name="Changes" comment="Better smoothing random, i guess">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="bb098ab6-bca6-4715-a632-b8deb0dd2426" name="Changes" comment="Added README.md">
+      <change afterPath="$PROJECT_DIR$/src/kernel.cl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/clew.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +41,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -73,21 +75,22 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/LiWinDom/Documents/Code/raytracing/src/lib&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/lib" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Raytracing" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../../example.json --width 320 --height 200" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Raytracing" TARGET_NAME="Raytracing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Raytracing" RUN_TARGET_NAME="Raytracing">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -109,7 +112,13 @@
       <workItem from="1710336605530" duration="8170000" />
       <workItem from="1710361502133" duration="320000" />
       <workItem from="1710404317122" duration="100000" />
-      <workItem from="1710406155948" duration="2252000" />
+      <workItem from="1710406155948" duration="2941000" />
+      <workItem from="1710423102377" duration="2356000" />
+      <workItem from="1710506203377" duration="1112000" />
+      <workItem from="1710533412504" duration="164000" />
+      <workItem from="1710533600537" duration="2840000" />
+      <workItem from="1710573471269" duration="32000" />
+      <workItem from="1710588271160" duration="3000" />
     </task>
     <task id="LOCAL-00001" summary="Bugfix with black pixels&#10;Some naming change">
       <option name="closed" value="true" />
@@ -175,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710404392162</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added README.md">
+      <option name="closed" value="true" />
+      <created>1710408765508</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710408765508</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +203,17 @@
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Bugfix with black pixels&#10;Some naming change" />
@@ -195,6 +223,7 @@
     <MESSAGE value="Added smoothing setting to camera&#10;via small rotation of vector from camera" />
     <MESSAGE value="Changed color in example.json" />
     <MESSAGE value="Better smoothing random, i guess" />
-    <option name="LAST_COMMIT_MESSAGE" value="Better smoothing random, i guess" />
+    <MESSAGE value="Added README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added README.md" />
   </component>
 </project>

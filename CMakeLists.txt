@@ -3,7 +3,7 @@ set(PROJECT_NAME Raytracing)
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 # Executables
-set(EXECUTABLES src/Main.cpp src/Window.cpp src/Window.h src/Vector.cpp src/Vector.h src/Camera.cpp src/Camera.h src/IObject.cpp src/IObject.h src/Objects/Sphere.cpp src/Objects/Sphere.h src/Objects/Cube.cpp src/Objects/Cube.h src/lib/json.hpp src/IO.cpp src/IO.h)
+set(EXECUTABLES src/Main.cpp src/Window.cpp src/Window.h src/Vector.cpp src/Vector.h src/Camera.cpp src/Camera.h src/IObject.cpp src/IObject.h src/Objects/Sphere.cpp src/Objects/Sphere.h src/Objects/Cube.cpp src/Objects/Cube.h src/lib/json.hpp src/IO.cpp src/IO.h src/lib/clew.h)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin/${CMAKE_BUILD_TYPE})
 
 # Linking
@@ -46,6 +46,9 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(SFML)
 include_directories(${SFML_INCLUDE_DIR})
 
+# OpenCL
+find_package(OpenCL REQUIRED)
+
 # Adding executables
 if (CMAKE_BUILD_TYPE STREQUAL "Release" AND WIN32)
   add_executable(${PROJECT_NAME} WIN32 ${EXECUTABLES})
@@ -63,7 +66,7 @@ endif ()
 
 # Configuring executable
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
-target_link_libraries(${PROJECT_NAME} PRIVATE ${SFML_LIBRARIES} ${LINK_FLAGS})
+target_link_libraries(${PROJECT_NAME} PRIVATE OpenCL::OpenCL ${SFML_LIBRARIES} ${LINK_FLAGS})
 set_target_properties(${PROJECT_NAME} PROPERTIES
     OUTPUT_NAME "${PROJECT_NAME}-${CMAKE_SYSTEM_NAME}"
     CLEAN_DIRECT_OUTPUT 1
