@@ -21,7 +21,7 @@ $ sudo apt -y install g++
 $ sudo apt -y install \
     build-essential python3 make cmake bison flex \
     libffi-dev libgmp-dev libxml2-dev libgdk-pixbuf2.0-dev libcairo2-dev \
-    libpango1.0-dev fonts-lyx gtk-doc-tools ghostscript
+    libpango1.0-dev fonts-lyx gtk-doc-tools ghostscript \
     libxrandr-dev libxcursor-dev libudev-dev libopenal-dev libflac-dev \
     libvorbis-dev libgl1-mesa-dev libegl1-mesa-dev libdrm-dev libgbm-dev
 ```
